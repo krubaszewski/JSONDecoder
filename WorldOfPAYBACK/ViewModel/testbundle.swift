@@ -31,14 +31,28 @@ extension StaticJSONMapper {
     }
 }
 
-//extension DateFormatter{
-//    static let iso8601Full: DateFormatter = {
-//        let formatter = DateFormatter()
-//        formatter.dateFormat = "dd.MM.yyyy"
+
+//extension Formatter{
+//    static let date = DateFormatter()
+//}
+//extension Date{
+//        var iso8601CustomDate: String{
+//            Formatter.date.calendar = Calendar(identifier: .iso8601)
+//            Formatter.date.locale = Locale(identifier: "en_US_POSIX")
+//            Formatter.date.timeZone = .current
+//            Formatter.date.dateFormat = "dd.MM.yyyy"
 //
-//        return formatter
-//    }()
-//
+//            return Formatter.date.string(from: self)
+//    }
+
+extension DateFormatter{
+    static let isoCustom: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZZ"
+        
+        return formatter
+    }()
+}
 //    static let testtest: DateFormatter = {
 //        let cos = DateFormatter()
 //        cos.locale = Locale(identifier: "de_DE")
@@ -46,4 +60,4 @@ extension StaticJSONMapper {
 //        let tt = cos.string(from: iso8601Full)
 //        return tt
 //    }()
-//}
+

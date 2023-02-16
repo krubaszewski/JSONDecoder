@@ -12,7 +12,6 @@
 		F0970132299D0C5600D80E2C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F0970131299D0C5600D80E2C /* Assets.xcassets */; };
 		F0970135299D0C5600D80E2C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F0970134299D0C5600D80E2C /* Preview Assets.xcassets */; };
 		F097013C299D2EB300D80E2C /* PBTransactions.json in Resources */ = {isa = PBXBuildFile; fileRef = F097013B299D2EB300D80E2C /* PBTransactions.json */; };
-		F097013E299D362B00D80E2C /* DataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F097013D299D362B00D80E2C /* DataModel.swift */; };
 		F0970140299D37FC00D80E2C /* Bunde-Decoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F097013F299D37FB00D80E2C /* Bunde-Decoder.swift */; };
 		F0970144299D4E1600D80E2C /* testtestow.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0970143299D4E1600D80E2C /* testtestow.swift */; };
 		F0970146299D672000D80E2C /* testbundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0970145299D672000D80E2C /* testbundle.swift */; };
@@ -28,7 +27,6 @@
 		F0970131299D0C5600D80E2C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F0970134299D0C5600D80E2C /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		F097013B299D2EB300D80E2C /* PBTransactions.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = PBTransactions.json; sourceTree = "<group>"; };
-		F097013D299D362B00D80E2C /* DataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModel.swift; sourceTree = "<group>"; };
 		F097013F299D37FB00D80E2C /* Bunde-Decoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bunde-Decoder.swift"; sourceTree = "<group>"; };
 		F0970143299D4E1600D80E2C /* testtestow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = testtestow.swift; sourceTree = "<group>"; };
 		F0970145299D672000D80E2C /* testbundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = testbundle.swift; sourceTree = "<group>"; };
@@ -91,7 +89,6 @@
 		F0970147299D690400D80E2C /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				F097013D299D362B00D80E2C /* DataModel.swift */,
 				F0970143299D4E1600D80E2C /* testtestow.swift */,
 				F097014F299DA8D200D80E2C /* DateModel.swift */,
 			);
@@ -198,7 +195,6 @@
 				F097014E299D760800D80E2C /* Symbols.swift in Sources */,
 				F0970146299D672000D80E2C /* testbundle.swift in Sources */,
 				F097012E299D0C5400D80E2C /* WorldOfPAYBACKApp.swift in Sources */,
-				F097013E299D362B00D80E2C /* DataModel.swift in Sources */,
 				F0970150299DA8D200D80E2C /* DateModel.swift in Sources */,
 				F0970140299D37FC00D80E2C /* Bunde-Decoder.swift in Sources */,
 				F0970144299D4E1600D80E2C /* testtestow.swift in Sources */,

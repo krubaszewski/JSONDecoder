@@ -30,10 +30,9 @@ struct TransactionsView: View {
                             HStack{
                                 VStack(alignment: .leading, spacing: 2){
                                     //- TODO: Zmienić formatowanie daty, lepsze formatowanie
-                                    Text(convertDateFormater("\(item.transactionDetail.bookingDate.formatted(.iso8601))"))
+                                    Text(convertDateFormater(item.transactionDetail.bookingDate.formatted(.iso8601)))
                                         .fontWeight(.heavy)
                                         .padding(.top,5)
-                                    //- TODO: dodać codingkey dla description
                                     Text("\(item.transactionDetail.descript ?? "N/A")")
                                         .font(.title3)
                                         .fontWeight(.medium)
