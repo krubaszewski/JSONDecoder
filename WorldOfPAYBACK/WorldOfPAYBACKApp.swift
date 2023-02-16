@@ -11,7 +11,15 @@ import SwiftUI
 struct WorldOfPAYBACKApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+//            ContentView()
+            TabView{
+                TransactionsView()
+                    .tabItem{
+                        Symbols.transactions
+                        Text("Transactions")
+                    }
+            }
+            
         }
     }
 }
