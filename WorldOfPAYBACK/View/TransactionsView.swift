@@ -9,7 +9,8 @@ import SwiftUI
 
 
 struct TransactionsView: View {
-    
+
+       
     @StateObject private var vm = ViewModel()
     
     var body: some View {
@@ -20,13 +21,13 @@ struct TransactionsView: View {
                         Text("Sum of displayed transactions:")
                             .font(.title3)
                         VStack(alignment: .center){
-                            Text("0000")
+                            Text("\(vm.sumOfDisplayedAmounts)")
                                 .font(.title2)
                                 .fontWeight(.heavy)
                         }
                     }
                     VStack(alignment: .leading){
-                        ForEach(vm.test){
+                        ForEach(vm.transactions){
                             item in
                             HStack{
                                 VStack(alignment: .leading, spacing: 2){
@@ -34,7 +35,7 @@ struct TransactionsView: View {
                                     Text(item.transactionDetail.formattedDate)
                                         .fontWeight(.heavy)
                                         .padding(.top,5)
-                                    Text("\(item.transactionDetail.descript ?? "N/A")")
+                                    Text(item.transactionDetail.descript ?? "N/A")
                                         .font(.title3)
                                         .fontWeight(.medium)
                                     Text("\(item.partnerDisplayName)")
@@ -43,7 +44,9 @@ struct TransactionsView: View {
                                         .fontWeight(.medium)
                                         .italic()
                                 }
+                                
                                 Spacer()
+                                
                                 Text("\(item.transactionDetail.value.amount) \(item.transactionDetail.value.currency)")
                                     .font(.title2)
                                     .fontWeight(.heavy)
@@ -58,16 +61,8 @@ struct TransactionsView: View {
                     }
                 }.navigationTitle("Transactions")
                     .onAppear(){
-                        do{
-                            let res = try StaticJSONMapper.decode(file: "PBTransactions", type: Transactions.self)
-                            vm.tr = res.items
-                            vm.test = vm.tr
-                        dump(vm.tr)
-                            print("==============")
-                        dump(vm.test)
-                        } catch{
-                            print(error)
-                        }
+                        vm.testFetch()
+                        vm.sumAmount()
                     }
             }
         }
