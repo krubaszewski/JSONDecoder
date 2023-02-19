@@ -23,9 +23,20 @@ struct Item: Decodable, Identifiable{
         case partnerDisplayName, alias, category, transactionDetail
     }
     
-//    static func <(lhs: Item, rhs: Item) -> Bool{
-//        lhs.transactionDetail.formattedDate < rhs.transactionDetail.formattedDate
+//    static func >(lhs: Item, rhs: Item) -> Bool{
+//        lhs.transactionDetail.formattedDate > rhs.transactionDetail.formattedDate
 //    }
+    //    static func == (lhs: Item, rhs: Item) -> Bool {
+    //        lhs.transactionDetail.value.amount == rhs.transactionDetail.value.amount
+    //    }
+    //
+    //    static func > (lhs: Item, rhs: Item) -> Bool {
+    //        lhs.transactionDetail.value.amount > rhs.transactionDetail.value.amount
+    //    }
+    //
+//        static func < (lhs: Item, rhs: Item) -> Bool {
+//            lhs.partnerDisplayName < rhs.partnerDisplayName
+//        }
 }
     
 struct Alias: Decodable{
@@ -55,13 +66,23 @@ struct TransactionDetail: Decodable{
         return timeStamp
     }
     
-//    static func <(lhs: TransactionDetail, rhs: TransactionDetail) -> Bool{
-//        lhs.formattedDate < rhs.formattedDate
-//    }
+    static func <(lhs: TransactionDetail, rhs: TransactionDetail) -> Bool{
+        lhs.value.amount < rhs.value.amount
+    }
     
 }
     
 struct Value: Decodable{
+    
     let amount: Int
     let currency: String
+    
+//    static func > (lhs: Value, rhs: Value) -> Bool {
+//        lhs.amount > rhs.amount
+//    }
+    
+    //    static func < (lhs: Value, rhs: Value) -> Bool {
+    //        lhs.amount < rhs.amount
+    //
+    //    }
 }

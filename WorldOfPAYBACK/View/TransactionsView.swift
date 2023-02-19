@@ -26,7 +26,7 @@ struct TransactionsView: View {
                         }
                     }
                     VStack(alignment: .leading){
-                        ForEach(vm.transactions){
+                        ForEach(vm.test){
                             item in
                             HStack{
                                 VStack(alignment: .leading, spacing: 2){
@@ -60,9 +60,11 @@ struct TransactionsView: View {
                     .onAppear(){
                         do{
                             let res = try StaticJSONMapper.decode(file: "PBTransactions", type: Transactions.self)
-                            vm.transactions = res.items
-                            
-                        dump(vm.transactions)
+                            vm.tr = res.items
+                            vm.test = vm.tr
+                        dump(vm.tr)
+                            print("==============")
+                        dump(vm.test)
                         } catch{
                             print(error)
                         }

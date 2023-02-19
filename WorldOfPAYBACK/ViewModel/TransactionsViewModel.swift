@@ -11,19 +11,22 @@ extension TransactionsView{
     
     @MainActor
     class ViewModel: ObservableObject{
+       @Published var tr: [Item] = []
+        @Published var test: [Item] = []
         
-        @Published var transactions: [Item] = []
-//        @Published var transSorted: [Item] = []
+    init(){
+        sortDate()
+    }
         
-        
-        init(){
-            sortDate()
-        }
         func sortDate(){
-            transactions = transactions.sorted(by:  {$0.transactionDetail.bookingDate > $1.transactionDetail.bookingDate })
+                
+//            test = tr.sorted(by: {
+//                $0.partnerDisplayName < $1.partnerDisplayName
+//            })
+
+            test = tr.sorted(by: {$0.transactionDetail.bookingDate < $1.transactionDetail.bookingDate})
             
-//            print(transSorted)
-            //        var transSorted  = transactions.values.sorted()
+//            test = tr.sorted(by: <)
         }
     }
 }
