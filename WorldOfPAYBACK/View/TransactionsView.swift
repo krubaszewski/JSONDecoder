@@ -7,10 +7,11 @@
 
 import SwiftUI
 
+
 struct TransactionsView: View {
     
-    @State private var transactions: [Item] = []
-
+    @StateObject private var vm = ViewModel()
+    
     var body: some View {
         NavigationStack{
             ZStack{
@@ -19,18 +20,18 @@ struct TransactionsView: View {
                         Text("Sum of displayed transactions:")
                             .font(.title3)
                         VStack(alignment: .center){
-                            Text("12000")
+                            Text("0000")
                                 .font(.title2)
                                 .fontWeight(.heavy)
                         }
                     }
                     VStack(alignment: .leading){
-                        ForEach(transactions, id: \.id){
+                        ForEach(vm.transactions){
                             item in
                             HStack{
                                 VStack(alignment: .leading, spacing: 2){
                                     //- TODO: Zmienić formatowanie daty, lepsze formatowanie
-                                    Text(convertDateFormater(item.transactionDetail.bookingDate.formatted(.iso8601)))
+                                    Text(item.transactionDetail.formattedDate)
                                         .fontWeight(.heavy)
                                         .padding(.top,5)
                                     Text("\(item.transactionDetail.descript ?? "N/A")")
@@ -59,7 +60,9 @@ struct TransactionsView: View {
                     .onAppear(){
                         do{
                             let res = try StaticJSONMapper.decode(file: "PBTransactions", type: Transactions.self)
-                            transactions = res.items
+                            vm.transactions = res.items
+                            
+                        dump(vm.transactions)
                         } catch{
                             print(error)
                         }

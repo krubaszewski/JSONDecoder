@@ -19,8 +19,11 @@ struct StaticJSONMapper {
         }
         
         let decoder = JSONDecoder()
-        decoder.keyDecodingStrategy = .convertFromSnakeCase
-        decoder.dateDecodingStrategy = .iso8601
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
+//        decoder.dateDecodingStrategy = .iso8601
+        decoder.dateDecodingStrategy = .formatted(formatter)
+        
         return try decoder.decode(T.self, from: data)
     }
 }

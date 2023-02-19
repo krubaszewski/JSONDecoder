@@ -22,6 +22,10 @@ struct Item: Decodable, Identifiable{
     enum CodingKeys: String, CodingKey{
         case partnerDisplayName, alias, category, transactionDetail
     }
+    
+//    static func <(lhs: Item, rhs: Item) -> Bool{
+//        lhs.transactionDetail.formattedDate < rhs.transactionDetail.formattedDate
+//    }
 }
     
 struct Alias: Decodable{
@@ -39,29 +43,25 @@ struct TransactionDetail: Decodable{
         case bookingDate
         case value
     }
+    
+    var formattedDate: String{
+        
+        //bookingDate.formatted(date: .abbreviated, time: .omitted)
+
+        let cos = DateFormatter()
+        cos.locale = Locale(identifier: "de_DE")
+        cos.dateStyle = .medium
+        let timeStamp = cos.string(from: bookingDate)
+        return timeStamp
+    }
+    
+//    static func <(lhs: TransactionDetail, rhs: TransactionDetail) -> Bool{
+//        lhs.formattedDate < rhs.formattedDate
+//    }
+    
 }
     
 struct Value: Decodable{
     let amount: Int
     let currency: String
 }
-
-//struct ServerResponse: Decodable, Identifiable {
-//
-//    var id = UUID()
-//    let partnerName: String
-//    let description: String
-////    let bookingDate: Date
-//    let value: Int
-//    let currency: String
-//
-//    init(from decoder: Decoder) throws{
-//        let rawResponse = try RawServerResponse(from: decoder)
-//
-//        partnerName = rawResponse.items.
-//
-//    }
-//
-//
-//
-//}

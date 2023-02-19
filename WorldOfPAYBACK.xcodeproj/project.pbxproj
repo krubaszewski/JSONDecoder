@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F090705C29A249CF006C27DF /* TransactionsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F090705B29A249CF006C27DF /* TransactionsViewModel.swift */; };
 		F097012E299D0C5400D80E2C /* WorldOfPAYBACKApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F097012D299D0C5400D80E2C /* WorldOfPAYBACKApp.swift */; };
 		F0970130299D0C5400D80E2C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F097012F299D0C5400D80E2C /* ContentView.swift */; };
 		F0970132299D0C5600D80E2C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F0970131299D0C5600D80E2C /* Assets.xcassets */; };
@@ -21,6 +22,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		F090705B29A249CF006C27DF /* TransactionsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionsViewModel.swift; sourceTree = "<group>"; };
 		F097012A299D0C5400D80E2C /* WorldOfPAYBACK.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WorldOfPAYBACK.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F097012D299D0C5400D80E2C /* WorldOfPAYBACKApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorldOfPAYBACKApp.swift; sourceTree = "<group>"; };
 		F097012F299D0C5400D80E2C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -100,6 +102,7 @@
 			children = (
 				F097013F299D37FB00D80E2C /* Bunde-Decoder.swift */,
 				F0970145299D672000D80E2C /* testbundle.swift */,
+				F090705B29A249CF006C27DF /* TransactionsViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -192,6 +195,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F0970130299D0C5400D80E2C /* ContentView.swift in Sources */,
+				F090705C29A249CF006C27DF /* TransactionsViewModel.swift in Sources */,
 				F097014E299D760800D80E2C /* Symbols.swift in Sources */,
 				F0970146299D672000D80E2C /* testbundle.swift in Sources */,
 				F097012E299D0C5400D80E2C /* WorldOfPAYBACKApp.swift in Sources */,
