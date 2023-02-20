@@ -17,6 +17,7 @@ extension TransactionsView {
 
         init() {
             fetchFromFile()
+            sortByDate()
             sumDisplayedAmounts()
         }
 
@@ -24,9 +25,8 @@ extension TransactionsView {
         func fetchFromFile() {
             do {
                 let res = try StaticJSONMapper.decode(file: "PBTransactions", type: Transactions.self)
-                transactions = res.items.sorted(by: {
-                    $0.transactionDetail.bookingDate > $1.transactionDetail.bookingDate
-                })
+                transactions = res.items
+                sortByDate()
                 sumDisplayedAmounts()
             } catch {
                 print(error)
@@ -38,14 +38,26 @@ extension TransactionsView {
             sumOfDisplayedAmounts = transactions.map { $0.transactionDetail.value.amount }.reduce(0, +)
         }
 
-        func filterByCategories(_ categories: String) {
-            fetchFromFile()
+        //- MARK: Function to sort by date
+        func sortByDate() {
             transactions = transactions.sorted(by: {
                 $0.transactionDetail.bookingDate > $1.transactionDetail.bookingDate
-            }).filter { $0.category == Int(categories) }
+            })
+        }
+
+        //- MARK: Function to sort by category
+        func sortByCategory(_ category: String) {
+            transactions = transactions.filter { $0.category == Int(category) }
+        }
+
+        //- MARK: Function to filtr by category
+        func filterByCategories(_ categories: String) {
+            fetchFromFile()
+            sortByCategory(categories)
             sumDisplayedAmounts()
         }
 
+        //- MARK: Function to update view based on selected category
         func updateDataByCategory(categories: String) {
 
             self.categories = categories
