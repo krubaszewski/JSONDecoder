@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F0870A6729A3C5CE00D7C938 /* TransactionsDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0870A6629A3C5CE00D7C938 /* TransactionsDetailView.swift */; };
+		F0870A6929A4256200D7C938 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0870A6829A4256200D7C938 /* Date.swift */; };
 		F090705C29A249CF006C27DF /* TransactionsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F090705B29A249CF006C27DF /* TransactionsViewModel.swift */; };
 		F097012E299D0C5400D80E2C /* WorldOfPAYBACKApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F097012D299D0C5400D80E2C /* WorldOfPAYBACKApp.swift */; };
 		F0970130299D0C5400D80E2C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F097012F299D0C5400D80E2C /* ContentView.swift */; };
@@ -21,6 +23,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		F0870A6629A3C5CE00D7C938 /* TransactionsDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionsDetailView.swift; sourceTree = "<group>"; };
+		F0870A6829A4256200D7C938 /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 		F090705B29A249CF006C27DF /* TransactionsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionsViewModel.swift; sourceTree = "<group>"; };
 		F097012A299D0C5400D80E2C /* WorldOfPAYBACK.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WorldOfPAYBACK.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F097012D299D0C5400D80E2C /* WorldOfPAYBACKApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorldOfPAYBACKApp.swift; sourceTree = "<group>"; };
@@ -89,8 +93,8 @@
 		F0970147299D690400D80E2C /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				F0970143299D4E1600D80E2C /* DataModel.swift */,
 				F097014F299DA8D200D80E2C /* DateModel.swift */,
+				F0970143299D4E1600D80E2C /* DataModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -108,6 +112,7 @@
 			isa = PBXGroup;
 			children = (
 				F097014A299D740500D80E2C /* TransactionsView.swift */,
+				F0870A6629A3C5CE00D7C938 /* TransactionsDetailView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -116,6 +121,7 @@
 			isa = PBXGroup;
 			children = (
 				F097014D299D760800D80E2C /* Symbols.swift */,
+				F0870A6829A4256200D7C938 /* Date.swift */,
 			);
 			path = Resourses;
 			sourceTree = "<group>";
@@ -192,9 +198,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				F0970130299D0C5400D80E2C /* ContentView.swift in Sources */,
+				F0870A6929A4256200D7C938 /* Date.swift in Sources */,
 				F090705C29A249CF006C27DF /* TransactionsViewModel.swift in Sources */,
 				F097014E299D760800D80E2C /* Symbols.swift in Sources */,
 				F0970146299D672000D80E2C /* JSONMapper.swift in Sources */,
+				F0870A6729A3C5CE00D7C938 /* TransactionsDetailView.swift in Sources */,
 				F097012E299D0C5400D80E2C /* WorldOfPAYBACKApp.swift in Sources */,
 				F0970150299DA8D200D80E2C /* DateModel.swift in Sources */,
 				F0970144299D4E1600D80E2C /* DataModel.swift in Sources */,

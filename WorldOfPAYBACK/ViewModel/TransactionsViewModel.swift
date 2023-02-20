@@ -74,3 +74,7 @@ extension TransactionsView {
         }
     }
 }
+
+extension Formatter {
+    static let formatter = DateFormatter()
+}

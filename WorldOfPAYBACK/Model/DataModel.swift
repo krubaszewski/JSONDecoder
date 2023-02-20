@@ -52,11 +52,11 @@ struct TransactionDetail: Decodable {
 
     var formattedDate: String {
         //bookingDate.formatted(date: .abbreviated, time: .omitted)
-        let cos = DateFormatter()
-        cos.locale = Locale(identifier: "de_DE")
-        cos.dateStyle = .medium
-        let timeStamp = cos.string(from: bookingDate)
-        return timeStamp
+        let formatter = DateFormatter()
+        formatter.locale = Locale(identifier: "de_DE")
+        formatter.dateStyle = .medium
+        let dateNewFormat = formatter.string(from: bookingDate)
+        return dateNewFormat
     }
 }
 

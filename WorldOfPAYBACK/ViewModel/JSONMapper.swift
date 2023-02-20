@@ -19,10 +19,10 @@ struct StaticJSONMapper {
         }
 
         let decoder = JSONDecoder()
-        let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
-//        decoder.dateDecodingStrategy = .iso8601
-        decoder.dateDecodingStrategy = .formatted(formatter)
+        
+//        Formatter.formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
+        decoder.dateDecodingStrategy = .iso8601
+//        decoder.dateDecodingStrategy = .formatted(decoder)
 
         return try decoder.decode(T.self, from: data)
     }

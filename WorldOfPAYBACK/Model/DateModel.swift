@@ -24,4 +24,11 @@ func convertDateFormater(_ date: String) -> String {
     return timeStamp
 }
 
-
+struct MyDateFormatt{
+    func dateFormat(_ date: Date) -> String {
+        Formatter.formatter.locale = Locale(identifier: "de_DE")
+        Formatter.formatter.dateStyle = .medium
+        let timeStamp = Formatter.formatter.string(from: date)
+        return timeStamp
+    }
+}

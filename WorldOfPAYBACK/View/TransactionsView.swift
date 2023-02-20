@@ -27,11 +27,12 @@ struct TransactionsView: View {
                         }
                     }
                     VStack(alignment: .leading) {
-                        ForEach(vm.transactions, id: \.id) { item in
+                        ForEach(vm.transactions) { item in
                             HStack {
                                 VStack(alignment: .leading, spacing: 2) {
 
-                                    Text(item.transactionDetail.formattedDate)
+//                                    Text(MyDateFormatt().dateFormat(item.transactionDetail.bookingDate))
+                                    Text(item.transactionDetail.bookingDate.customDateFormat())
                                         .fontWeight(.heavy)
                                         .padding(.top, 5)
 
@@ -39,7 +40,7 @@ struct TransactionsView: View {
                                         .font(.title3)
                                         .fontWeight(.medium)
 
-                                    Text("\(item.partnerDisplayName)")
+                                    Text(item.partnerDisplayName)
                                         .font(.callout)
                                         .padding(.bottom, 10)
                                         .fontWeight(.medium)
@@ -74,9 +75,6 @@ struct TransactionsView: View {
                         Text("Category: \(vm.categories)")
                     }
                 })
-//                    .onAppear(){
-//                        vm
-//                    }
             }
         }
     }
