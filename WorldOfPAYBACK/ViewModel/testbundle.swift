@@ -34,6 +34,14 @@ extension StaticJSONMapper {
     }
 }
 
+extension DateFormatter{
+    static let isoCustom: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZZ"
+        
+        return formatter
+    }()
+}
 
 //extension Formatter{
 //    static let date = DateFormatter()
@@ -48,14 +56,6 @@ extension StaticJSONMapper {
 //            return Formatter.date.string(from: self)
 //    }
 
-extension DateFormatter{
-    static let isoCustom: DateFormatter = {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZZ"
-        
-        return formatter
-    }()
-}
 //    static let testtest: DateFormatter = {
 //        let cos = DateFormatter()
 //        cos.locale = Locale(identifier: "de_DE")

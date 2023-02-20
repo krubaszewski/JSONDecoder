@@ -27,17 +27,18 @@ struct TransactionsView: View {
                         }
                     }
                     VStack(alignment: .leading){
-                        ForEach(vm.transactions){
-                            item in
+                        ForEach(vm.transactions){ item in
                             HStack{
                                 VStack(alignment: .leading, spacing: 2){
-                                    //- TODO: Zmienić formatowanie daty, lepsze formatowanie
+
                                     Text(item.transactionDetail.formattedDate)
                                         .fontWeight(.heavy)
                                         .padding(.top,5)
+                                    
                                     Text(item.transactionDetail.descript ?? "N/A")
                                         .font(.title3)
                                         .fontWeight(.medium)
+                                    
                                     Text("\(item.partnerDisplayName)")
                                         .font(.callout)
                                         .padding(.bottom, 10)
@@ -50,23 +51,34 @@ struct TransactionsView: View {
                                 Text("\(item.transactionDetail.value.amount) \(item.transactionDetail.value.currency)")
                                     .font(.title2)
                                     .fontWeight(.heavy)
-                            } .frame(maxWidth: 320,
+                                
+                            }.frame(maxWidth: 320,
                                      alignment: .leading)
-                                                     .padding(.horizontal, 20)
-                                                     .background(Color.blue)
-                                                     .cornerRadius(25)
-                                                     .padding(.bottom, 0.3)
+                            .padding(.horizontal, 20)
+                            .background(Color.blue)
+                            .cornerRadius(25)
+                            .padding(.bottom, 0.3)
                         }
                        
                     }
                 }.navigationTitle("Transactions")
-                    .onAppear(){
-                        vm.testFetch()
-                        vm.sumAmount()
-                    }
+                    .toolbar(content: {
+                        Menu(content: {
+                            ForEach(categories, id:\.self){ cat in
+                                Button(action: {vm.updateData(categories: cat)}, label:{
+                                    Text(cat)
+                                })
+                            }
+                        })
+                        {
+                            Text("Category: \(vm.categories)")
+                        }
+                    })
+//                    .onAppear(){
+//                        vm
+//                    }
             }
         }
-
     }
 }
 

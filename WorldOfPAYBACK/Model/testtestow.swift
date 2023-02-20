@@ -11,8 +11,9 @@ struct Transactions: Decodable{
     let items: [Item]
 }
     
-struct Item: Decodable, Identifiable{
-//    var id: UUID? = UUID()
+struct Item: Decodable, Identifiable, Comparable{
+
+    //    var id: UUID? = UUID()
     var id = UUID()
     let partnerDisplayName: String
     let alias: Alias
@@ -23,20 +24,21 @@ struct Item: Decodable, Identifiable{
         case partnerDisplayName, alias, category, transactionDetail
     }
     
-//    static func >(lhs: Item, rhs: Item) -> Bool{
-//        lhs.transactionDetail.formattedDate > rhs.transactionDetail.formattedDate
-//    }
-    //    static func == (lhs: Item, rhs: Item) -> Bool {
-    //        lhs.transactionDetail.value.amount == rhs.transactionDetail.value.amount
-    //    }
-    //
-    //    static func > (lhs: Item, rhs: Item) -> Bool {
-    //        lhs.transactionDetail.value.amount > rhs.transactionDetail.value.amount
-    //    }
-    //
-//        static func < (lhs: Item, rhs: Item) -> Bool {
-//            lhs.partnerDisplayName < rhs.partnerDisplayName
-//        }
+    
+    //- MARK: Used for filtering, one way of achieving sorted data (func is in the file TransactionsView)
+    static func > (lhs: Item, rhs: Item) -> Bool {
+            lhs.transactionDetail.bookingDate > rhs.transactionDetail.bookingDate
+        }
+    
+    static func < (lhs: Item, rhs: Item) -> Bool {
+        lhs.transactionDetail.bookingDate < rhs.transactionDetail.bookingDate
+
+    }
+    
+    static func == (lhs: Item, rhs: Item) -> Bool {
+        lhs.transactionDetail.bookingDate == rhs.transactionDetail.bookingDate
+
+    }
 }
     
 struct Alias: Decodable{
@@ -44,6 +46,7 @@ struct Alias: Decodable{
     }
     
 struct TransactionDetail: Decodable{
+    
     let descript: String?
     let bookingDate: Date
     let value: Value
@@ -73,16 +76,8 @@ struct TransactionDetail: Decodable{
 }
     
 struct Value: Decodable{
-    
     let amount: Int
     let currency: String
-    
-//    static func > (lhs: Value, rhs: Value) -> Bool {
-//        lhs.amount > rhs.amount
-//    }
-    
-    //    static func < (lhs: Value, rhs: Value) -> Bool {
-    //        lhs.amount < rhs.amount
-    //
-    //    }
 }
+
+var categories = ["All", "1", "2", "3"]
