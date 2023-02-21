@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Combine
 
 struct StaticJSONMapper {
     static func decode<T: Decodable>(file: String, type: T.Type) throws -> T {
@@ -19,7 +20,7 @@ struct StaticJSONMapper {
         }
 
         let decoder = JSONDecoder()
-        
+
 //        Formatter.formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
         decoder.dateDecodingStrategy = .iso8601
 //        decoder.dateDecodingStrategy = .formatted(decoder)

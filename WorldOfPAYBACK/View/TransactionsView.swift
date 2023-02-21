@@ -10,8 +10,7 @@ import SwiftUI
 
 struct TransactionsView: View {
 
-
-    @StateObject private var vm = ViewModel()
+    @EnvironmentObject private var vm: TransactionsViewModel
 
     var body: some View {
         NavigationStack {
@@ -63,18 +62,18 @@ struct TransactionsView: View {
 
                     }
                 }.navigationTitle("Transactions")
-                    .toolbar(content: {
-                    Menu(content: {
-                        ForEach(categories, id: \.self) { cat in
-                            Button(action: { vm.updateDataByCategory(categories: cat) }, label: {
-                                    Text(cat)
-                                })
-                        }
-                    })
-                    {
-                        Text("Category: \(vm.categories)")
-                    }
-                })
+//                    .toolbar(content: {
+//                    Menu(content: {
+//                        ForEach(categories, id: \.self) { cat in
+//                            Button(action: { vm.updateDataByCategory(categories: cat) }, label: {
+//                                    Text(cat)
+//                                })
+//                        }
+//                    })
+//                    {
+//                        Text("Category: \(vm.categories)")
+//                    }
+//                })
             }
         }
     }
@@ -82,6 +81,9 @@ struct TransactionsView: View {
 
 struct TransactionsView_Previews: PreviewProvider {
     static var previews: some View {
-        TransactionsView()
+        
+            TransactionsView()
+    .environmentObject(TransactionsViewModel())
+        
     }
 }

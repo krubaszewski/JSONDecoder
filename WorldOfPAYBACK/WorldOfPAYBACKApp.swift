@@ -9,17 +9,18 @@ import SwiftUI
 
 @main
 struct WorldOfPAYBACKApp: App {
+    
+    @StateObject private var vm = TransactionsViewModel()
+
     var body: some Scene {
         WindowGroup {
-//            ContentView()
-            TabView{
+            TabView {
                 TransactionsView()
-                    .tabItem{
-                        Symbols.transactions
-                        Text("Transactions")
-                    }
-            }
-            
+                    .tabItem {
+                    Symbols.transactions
+                    Text("Transactions")
+                }
+            }.environmentObject(vm)
         }
     }
 }

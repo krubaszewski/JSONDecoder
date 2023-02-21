@@ -20,6 +20,7 @@
 		F097014B299D740500D80E2C /* TransactionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F097014A299D740500D80E2C /* TransactionsView.swift */; };
 		F097014E299D760800D80E2C /* Symbols.swift in Sources */ = {isa = PBXBuildFile; fileRef = F097014D299D760800D80E2C /* Symbols.swift */; };
 		F0970150299DA8D200D80E2C /* DateModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F097014F299DA8D200D80E2C /* DateModel.swift */; };
+		F0EE833429A4F21600F322A1 /* TransactionsDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0EE833329A4F21600F322A1 /* TransactionsDataService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +38,7 @@
 		F097014A299D740500D80E2C /* TransactionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionsView.swift; sourceTree = "<group>"; };
 		F097014D299D760800D80E2C /* Symbols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Symbols.swift; sourceTree = "<group>"; };
 		F097014F299DA8D200D80E2C /* DateModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateModel.swift; sourceTree = "<group>"; };
+		F0EE833329A4F21600F322A1 /* TransactionsDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionsDataService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +73,7 @@
 			children = (
 				F097012D299D0C5400D80E2C /* WorldOfPAYBACKApp.swift */,
 				F097012F299D0C5400D80E2C /* ContentView.swift */,
+				F0EE833229A4F1E100F322A1 /* Services */,
 				F097014C299D75EF00D80E2C /* Resourses */,
 				F0970149299D692600D80E2C /* View */,
 				F0970148299D690B00D80E2C /* ViewModel */,
@@ -124,6 +127,14 @@
 				F0870A6829A4256200D7C938 /* Date.swift */,
 			);
 			path = Resourses;
+			sourceTree = "<group>";
+		};
+		F0EE833229A4F1E100F322A1 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				F0EE833329A4F21600F322A1 /* TransactionsDataService.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -198,6 +209,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F0970130299D0C5400D80E2C /* ContentView.swift in Sources */,
+				F0EE833429A4F21600F322A1 /* TransactionsDataService.swift in Sources */,
 				F0870A6929A4256200D7C938 /* Date.swift in Sources */,
 				F090705C29A249CF006C27DF /* TransactionsViewModel.swift in Sources */,
 				F097014E299D760800D80E2C /* Symbols.swift in Sources */,
