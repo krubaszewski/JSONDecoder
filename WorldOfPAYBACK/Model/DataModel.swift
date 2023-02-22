@@ -50,14 +50,14 @@ struct TransactionDetail: Decodable {
     let bookingDate: Date
     let value: Value
 
-    var formattedDate: String {
-        //bookingDate.formatted(date: .abbreviated, time: .omitted)
-        let formatter = DateFormatter()
-        formatter.locale = Locale(identifier: "de_DE")
-        formatter.dateStyle = .medium
-        let dateNewFormat = formatter.string(from: bookingDate)
-        return dateNewFormat
-    }
+//    var formattedDate: String {
+//        //bookingDate.formatted(date: .abbreviated, time: .omitted)
+//        let formatter = DateFormatter()
+//        formatter.locale = Locale(identifier: "de_DE")
+//        formatter.dateStyle = .medium
+//        let dateNewFormat = formatter.string(from: bookingDate)
+//        return dateNewFormat
+//    }
 }
 
 struct Value: Decodable {

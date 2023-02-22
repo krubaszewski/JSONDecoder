@@ -21,6 +21,7 @@
 		F097014E299D760800D80E2C /* Symbols.swift in Sources */ = {isa = PBXBuildFile; fileRef = F097014D299D760800D80E2C /* Symbols.swift */; };
 		F0970150299DA8D200D80E2C /* DateModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F097014F299DA8D200D80E2C /* DateModel.swift */; };
 		F0EE833429A4F21600F322A1 /* TransactionsDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0EE833329A4F21600F322A1 /* TransactionsDataService.swift */; };
+		F0EE833A29A5976800F322A1 /* FilterOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0EE833929A5976800F322A1 /* FilterOption.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +40,7 @@
 		F097014D299D760800D80E2C /* Symbols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Symbols.swift; sourceTree = "<group>"; };
 		F097014F299DA8D200D80E2C /* DateModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateModel.swift; sourceTree = "<group>"; };
 		F0EE833329A4F21600F322A1 /* TransactionsDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionsDataService.swift; sourceTree = "<group>"; };
+		F0EE833929A5976800F322A1 /* FilterOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterOption.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +100,7 @@
 			children = (
 				F097014F299DA8D200D80E2C /* DateModel.swift */,
 				F0970143299D4E1600D80E2C /* DataModel.swift */,
+				F0EE833929A5976800F322A1 /* FilterOption.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -208,6 +211,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F0EE833A29A5976800F322A1 /* FilterOption.swift in Sources */,
 				F0970130299D0C5400D80E2C /* ContentView.swift in Sources */,
 				F0EE833429A4F21600F322A1 /* TransactionsDataService.swift in Sources */,
 				F0870A6929A4256200D7C938 /* Date.swift in Sources */,

@@ -11,6 +11,7 @@ import Combine
 class TransactionsViewModel: ObservableObject {
     @Published var transactions: [Item] = []
     @Published var categories = "All"
+    @Published var cat: FilterOption = .All
 
     private let dataService = TransactionsDataService()
     private var cancel = Set<AnyCancellable>()
@@ -29,22 +30,37 @@ class TransactionsViewModel: ObservableObject {
 
     func addSubscriber() {
         dataService.$transactions
-            .map(sortByDate)
-            .sink { (transactions) in
-            self.transactions = transactions
-        }
-            .store(in: &cancel)
+            .combineLatest($cat)
+            .map(sortAndFilter)
+            .sink { [weak self] (fact) in
+                self?.transactions = fact
+            }.store(in: &cancel)
     }
 
+    
+    func sortAndFilter(transactions: [Item], filter: FilterOption) -> [Item]{
+        var test = sortByDate(transactions: transactions)
+        var new = testFilter(filter: filter, transactions: test)
+        return new
+    }
     func sortByDate(transactions: [Item]) -> [Item]{
-        transactions.sorted(by: {
+       transactions.sorted(by: {
             $0.transactionDetail.bookingDate > $1.transactionDetail.bookingDate
         })
     }
     
-//    func testFilter(transactions: [Item]) -> [Item] {
-//        transactions.filter { $0.category == 1}
-//    }
+    func testFilter(filter:FilterOption, transactions: [Item]) -> [Item] {
+        switch filter{
+        case .ONE:
+            return transactions.filter { $0.category == 1}
+        case .TWO:
+            return transactions.filter { $0.category == 2}
+        case.THREE:
+           return transactions.filter { $0.category == 3}
+        case .All:
+           return transactions
+        }
+    }
 
     //- MARK: Function to call the model to fetch the data from JSON file
     //func fetchFromFile() {
