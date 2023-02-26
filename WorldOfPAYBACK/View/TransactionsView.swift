@@ -10,80 +10,119 @@ import SwiftUI
 
 struct TransactionsView: View {
 
+    @EnvironmentObject private var vm: TransactionsViewModel
+    @EnvironmentObject var lunchScreenManager: LunchScreenManager
+    @State private var selectedTransaction: Item? = nil
+    @State private var showDetailView: Bool = false
+    @StateObject private var errorHandel = TransactionsDataService()
 
-    @StateObject private var vm = ViewModel()
 
     var body: some View {
-        NavigationStack {
-            ZStack {
-                List {
-                    VStack {
-                        Text("Sum of displayed transactions:")
-                            .font(.title3)
-                        VStack(alignment: .center) {
-                            Text("\(vm.sumOfDisplayedAmounts)")
-                                .font(.title2)
-                                .fontWeight(.heavy)
-                        }
-                    }
-                    VStack(alignment: .leading) {
-                        ForEach(vm.transactions, id: \.id) { item in
-                            HStack {
-                                VStack(alignment: .leading, spacing: 2) {
+        ZStack {
 
-                                    Text(item.transactionDetail.formattedDate)
-                                        .fontWeight(.heavy)
-                                        .padding(.top, 5)
+            allTransactions
 
-                                    Text(item.transactionDetail.description ?? "N/A")
-                                        .font(.title3)
-                                        .fontWeight(.medium)
-
-                                    Text("\(item.partnerDisplayName)")
-                                        .font(.callout)
-                                        .padding(.bottom, 10)
-                                        .fontWeight(.medium)
-                                        .italic()
-                                }
-
-                                Spacer()
-
-                                Text("\(item.transactionDetail.value.amount) \(item.transactionDetail.value.currency)")
-                                    .font(.title2)
-                                    .fontWeight(.heavy)
-
-                            }.frame(maxWidth: 320,
-                                alignment: .leading)
-                                .padding(.horizontal, 20)
-                                .background(Color.blue)
-                                .cornerRadius(25)
-                                .padding(.bottom, 0.3)
-                        }
-
-                    }
-                }.navigationTitle("Transactions")
-                    .toolbar(content: {
-                    Menu(content: {
-                        ForEach(categories, id: \.self) { cat in
-                            Button(action: { vm.updateDataByCategory(categories: cat) }, label: {
-                                    Text(cat)
-                                })
-                        }
-                    })
-                    {
-                        Text("Category: \(vm.categories)")
-                    }
-                })
-//                    .onAppear(){
-//                        vm
-//                    }
+        }.navigationTitle("Transactions")
+            .listStyle(PlainListStyle())
+            .toolbar {
+            ToolbarItem(placement: .navigationBarLeading) {
+                Text("Sum: \(vm.sumOfDisplayedAmounts)")
+                    .fontWeight(.semibold)
             }
+        }.toolbar(content: {
+            toolBarCategoryFilter
+        })
+            .background(
+            NavigationLink(
+                destination: DetailsViewLoading(transaction: $selectedTransaction),
+                isActive: $showDetailView,
+                label: { EmptyView() })
+        ).alert(isPresented: $errorHandel.hasError, error: errorHandel.error) { }
+            
+    }
+    func test(teste: FilterOption) {
+        switch teste {
+        case .ONE:
+            vm.cat = .ONE
+        case .TWO:
+            vm.cat = .TWO
+        case .THREE:
+            vm.cat = .THREE
+        default:
+            vm.cat = .All
         }
     }
 }
 
 struct TransactionsView_Previews: PreviewProvider {
     static var previews: some View {
-        TransactionsView()
+
+        NavigationView {
+            TransactionsView()
+        }.environmentObject(TransactionsViewModel())
+            .environmentObject(LunchScreenManager())
+            .listRowSeparator(.hidden)
+    }
+}
+
+extension TransactionsView {
+
+    private var allTransactions: some View {
+        List() {
+            ZStack {
+                summaryDisplay
+            }
+            ForEach(vm.transactions) { item in
+                TransactionPillView(transaction: item)
+                    .onTapGesture {
+                    goToDetail(transaction: item)
+                }.listRowSeparator(.hidden)
+                    .listRowInsets(EdgeInsets(top: 0,
+                    leading: 16,
+                    bottom: 8,
+                    trailing: 0))
+//                NavigationLink(destination: TransactionsDetailView(transaction: item),
+//                    label: {
+//                    })
+//                    .listRowSeparator(.hidden)
+//                .listRowInsets(EdgeInsets(top: 0,
+//                                leading: 16,
+//                                bottom: 8,
+//                                trailing:0))
+            }
+        }.onAppear()
+    }
+
+    private func goToDetail(transaction: Item) {
+        selectedTransaction = transaction
+        showDetailView.toggle()
+    }
+
+    private var toolBarCategoryFilter: some View {
+        VStack {
+            Menu(content: {
+                ForEach(FilterOption.allFilters, id: \.self) { filter in
+                    Button(action: { test(teste: filter) }, label: {
+                            Text("\(filter.rawValue)")
+                        })
+                }
+            })
+            {
+                Text("Category: \(vm.cat.rawValue)")
+            }
+        }
+    }
+
+    private var summaryDisplay: some View {
+        VStack {
+            Text("Sum of displayed transactions:")
+                .font(.title3)
+
+            Text("\(vm.sumOfDisplayedAmounts)")
+                .font(.title2)
+                .fontWeight(.heavy)
+                .frame(maxWidth: .infinity, alignment: .center)
+            Divider()
+        }
     }
 }
