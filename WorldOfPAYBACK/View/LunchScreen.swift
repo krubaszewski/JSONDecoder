@@ -12,7 +12,7 @@ struct LunchScreen: View {
     @EnvironmentObject var lunchScreenManager: LunchScreenManager
 //    @ObservedObject var test2 = LunchScreenManager()
     @State var infoooo: String = "Loading data..."
-    @State var isActive: Bool = false
+    @State var isActive: Bool = true
     
     
     var body: some View {
