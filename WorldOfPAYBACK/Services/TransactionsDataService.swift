@@ -8,39 +8,43 @@
 import Foundation
 import Combine
 
-class TransactionsDataService {
+class TransactionsDataService: ObservableObject {
 
     @Published var transactions: [Item] = []
+    @Published var error: StaticJSONMapper.MappingError?
+    @Published var hasError: Bool = false
 
-    var res: AnyCancellable?
+    var jsonFileSubscription: AnyCancellable?
 
     init() {
         fetchFromFile()
     }
 
-    //        func fetchFromFile() {
-    //            do {
-    //                let res = try StaticJSONMapper.decode(file: "PBTransactions", type: Transactions.self)
-    //                transactions = res.items
-    //            } catch {
-    //                print(error)
-    //            }
-    //        }
-
-    func fetchFromFile() {
-        res = Bundle.main.decodeable(fileName: "PBTransactions.json")
-            .sink(receiveCompletion: { completion in
-            switch completion {
-            case .finished:
-                break
-            case .failure(let error):
-                print("Error: \(error.localizedDescription)")
+            func fetchFromFile() {
+                do {
+                    let jsonFileSubscription = try StaticJSONMapper.decode(file: "PBTransactions", type: Transactions.self)
+                    transactions = jsonFileSubscription.items
+                } catch {
+                    print(error)
+                    self.hasError = true
+                    self.error = error as? StaticJSONMapper.MappingError
+                }
             }
-        }, receiveValue: { (fact: Transactions) in
-                self.transactions = fact.items
-                self.res?.cancel()
-            })
-    }
+
+//    func fetchFromFile() {
+//        jsonFileSubscription = Bundle.main.decodeable(fileName: "PBTransacons.json")
+//            .sink(receiveCompletion: { completion in
+//            switch completion {
+//            case .finished:
+//                break
+//            case .failure(let error):
+//                print("Error: \(error.localizedDescription)")
+//            }
+//        }, receiveValue: { [weak self] (fact: Transactions) in
+//                self?.transactions = fact.items
+//                self?.jsonFileSubscription?.cancel()
+//            })
+//    }
 
 }
 

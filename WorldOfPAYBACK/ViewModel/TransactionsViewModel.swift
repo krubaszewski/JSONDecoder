@@ -9,18 +9,21 @@ import Foundation
 import Combine
 
 class TransactionsViewModel: ObservableObject {
+    
     @Published var transactions: [Item] = []
     @Published var categories = "All"
     @Published var cat: FilterOption = .All
-
+    @Published var randomBool = Bool.random()
+    
     private let dataService = TransactionsDataService()
     private var cancel = Set<AnyCancellable>()
-    
-    var sumOfDisplayedAmounts: Int{
-        transactions.map{ $0.transactionDetail.value.amount }.reduce(0, +)
+
+    var sumOfDisplayedAmounts: Int {
+        transactions.map { $0.transactionDetail.value.amount }.reduce(0, +)
     }
 
     init() {
+//        fakeURLCall()
         addSubscriber()
         //        fetchFromFile()
         //        sortByDate()
@@ -33,32 +36,45 @@ class TransactionsViewModel: ObservableObject {
             .combineLatest($cat)
             .map(sortAndFilter)
             .sink { [weak self] (fact) in
-                self?.transactions = fact
-            }.store(in: &cancel)
+            self?.transactions = fact
+        }.store(in: &cancel)
     }
 
     
-    func sortAndFilter(transactions: [Item], filter: FilterOption) -> [Item]{
+//    func fakeURLCall(){
+//        
+//        let randomDouble = Double.random(in: 1..<3)
+//        
+//        DispatchQueue.main.asyncAfter(deadline: .now() + randomDouble) { [self] in
+//            if randomBool {
+//                self.addSubscriber()
+//            } else{
+//                Test()
+//            }
+//        }
+//    }
+    
+    func sortAndFilter(transactions: [Item], filter: FilterOption) -> [Item] {
         var test = sortByDate(transactions: transactions)
         var new = testFilter(filter: filter, transactions: test)
         return new
     }
-    func sortByDate(transactions: [Item]) -> [Item]{
-       transactions.sorted(by: {
+    func sortByDate(transactions: [Item]) -> [Item] {
+        transactions.sorted(by: {
             $0.transactionDetail.bookingDate > $1.transactionDetail.bookingDate
         })
     }
-    
-    func testFilter(filter:FilterOption, transactions: [Item]) -> [Item] {
-        switch filter{
+
+    func testFilter(filter: FilterOption, transactions: [Item]) -> [Item] {
+        switch filter {
         case .ONE:
-            return transactions.filter { $0.category == 1}
+            return transactions.filter { $0.category == 1 }
         case .TWO:
-            return transactions.filter { $0.category == 2}
+            return transactions.filter { $0.category == 2 }
         case.THREE:
-           return transactions.filter { $0.category == 3}
+            return transactions.filter { $0.category == 3 }
         case .All:
-           return transactions
+            return transactions
         }
     }
 

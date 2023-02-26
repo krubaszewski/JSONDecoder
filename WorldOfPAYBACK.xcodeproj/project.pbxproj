@@ -7,11 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		F0870A6729A3C5CE00D7C938 /* TransactionsDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0870A6629A3C5CE00D7C938 /* TransactionsDetailView.swift */; };
+		F00971FF29AA17740030606E /* TransactionPillView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0EC2FA329A7B42300804EB0 /* TransactionPillView.swift */; };
+		F009720029AA179D0030606E /* PrevievProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0EC2FA529A7B76400804EB0 /* PrevievProvider.swift */; };
+		F009720329AA1F0F0030606E /* LunchScreenManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F009720229AA1F0F0030606E /* LunchScreenManager.swift */; };
+		F00C410D29AA0E9000841485 /* LunchScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00C410C29AA0E9000841485 /* LunchScreen.swift */; };
+		F00C411729AA13E600841485 /* TransactionsDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00C411629AA13E600841485 /* TransactionsDetailView.swift */; };
 		F0870A6929A4256200D7C938 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0870A6829A4256200D7C938 /* Date.swift */; };
 		F090705C29A249CF006C27DF /* TransactionsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F090705B29A249CF006C27DF /* TransactionsViewModel.swift */; };
 		F097012E299D0C5400D80E2C /* WorldOfPAYBACKApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F097012D299D0C5400D80E2C /* WorldOfPAYBACKApp.swift */; };
-		F0970130299D0C5400D80E2C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F097012F299D0C5400D80E2C /* ContentView.swift */; };
 		F0970132299D0C5600D80E2C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F0970131299D0C5600D80E2C /* Assets.xcassets */; };
 		F0970135299D0C5600D80E2C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F0970134299D0C5600D80E2C /* Preview Assets.xcassets */; };
 		F097013C299D2EB300D80E2C /* PBTransactions.json in Resources */ = {isa = PBXBuildFile; fileRef = F097013B299D2EB300D80E2C /* PBTransactions.json */; };
@@ -25,12 +28,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		F0870A6629A3C5CE00D7C938 /* TransactionsDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionsDetailView.swift; sourceTree = "<group>"; };
+		F009720129AA1AF00030606E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		F009720229AA1F0F0030606E /* LunchScreenManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LunchScreenManager.swift; sourceTree = "<group>"; };
+		F00C410C29AA0E9000841485 /* LunchScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LunchScreen.swift; sourceTree = "<group>"; };
+		F00C411629AA13E600841485 /* TransactionsDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionsDetailView.swift; sourceTree = "<group>"; };
 		F0870A6829A4256200D7C938 /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 		F090705B29A249CF006C27DF /* TransactionsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionsViewModel.swift; sourceTree = "<group>"; };
 		F097012A299D0C5400D80E2C /* WorldOfPAYBACK.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WorldOfPAYBACK.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F097012D299D0C5400D80E2C /* WorldOfPAYBACKApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorldOfPAYBACKApp.swift; sourceTree = "<group>"; };
-		F097012F299D0C5400D80E2C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		F0970131299D0C5600D80E2C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F0970134299D0C5600D80E2C /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		F097013B299D2EB300D80E2C /* PBTransactions.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = PBTransactions.json; sourceTree = "<group>"; };
@@ -39,6 +44,8 @@
 		F097014A299D740500D80E2C /* TransactionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionsView.swift; sourceTree = "<group>"; };
 		F097014D299D760800D80E2C /* Symbols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Symbols.swift; sourceTree = "<group>"; };
 		F097014F299DA8D200D80E2C /* DateModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateModel.swift; sourceTree = "<group>"; };
+		F0EC2FA329A7B42300804EB0 /* TransactionPillView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionPillView.swift; sourceTree = "<group>"; };
+		F0EC2FA529A7B76400804EB0 /* PrevievProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrevievProvider.swift; sourceTree = "<group>"; };
 		F0EE833329A4F21600F322A1 /* TransactionsDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionsDataService.swift; sourceTree = "<group>"; };
 		F0EE833929A5976800F322A1 /* FilterOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterOption.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -73,8 +80,8 @@
 		F097012C299D0C5400D80E2C /* WorldOfPAYBACK */ = {
 			isa = PBXGroup;
 			children = (
+				F009720129AA1AF00030606E /* Info.plist */,
 				F097012D299D0C5400D80E2C /* WorldOfPAYBACKApp.swift */,
-				F097012F299D0C5400D80E2C /* ContentView.swift */,
 				F0EE833229A4F1E100F322A1 /* Services */,
 				F097014C299D75EF00D80E2C /* Resourses */,
 				F0970149299D692600D80E2C /* View */,
@@ -117,8 +124,10 @@
 		F0970149299D692600D80E2C /* View */ = {
 			isa = PBXGroup;
 			children = (
+				F0EC2FA329A7B42300804EB0 /* TransactionPillView.swift */,
 				F097014A299D740500D80E2C /* TransactionsView.swift */,
-				F0870A6629A3C5CE00D7C938 /* TransactionsDetailView.swift */,
+				F00C410C29AA0E9000841485 /* LunchScreen.swift */,
+				F00C411629AA13E600841485 /* TransactionsDetailView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -126,7 +135,9 @@
 		F097014C299D75EF00D80E2C /* Resourses */ = {
 			isa = PBXGroup;
 			children = (
+				F009720229AA1F0F0030606E /* LunchScreenManager.swift */,
 				F097014D299D760800D80E2C /* Symbols.swift */,
+				F0EC2FA529A7B76400804EB0 /* PrevievProvider.swift */,
 				F0870A6829A4256200D7C938 /* Date.swift */,
 			);
 			path = Resourses;
@@ -212,14 +223,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				F0EE833A29A5976800F322A1 /* FilterOption.swift in Sources */,
-				F0970130299D0C5400D80E2C /* ContentView.swift in Sources */,
 				F0EE833429A4F21600F322A1 /* TransactionsDataService.swift in Sources */,
 				F0870A6929A4256200D7C938 /* Date.swift in Sources */,
 				F090705C29A249CF006C27DF /* TransactionsViewModel.swift in Sources */,
+				F009720329AA1F0F0030606E /* LunchScreenManager.swift in Sources */,
 				F097014E299D760800D80E2C /* Symbols.swift in Sources */,
+				F00C410D29AA0E9000841485 /* LunchScreen.swift in Sources */,
 				F0970146299D672000D80E2C /* JSONMapper.swift in Sources */,
-				F0870A6729A3C5CE00D7C938 /* TransactionsDetailView.swift in Sources */,
+				F009720029AA179D0030606E /* PrevievProvider.swift in Sources */,
+				F00C411729AA13E600841485 /* TransactionsDetailView.swift in Sources */,
 				F097012E299D0C5400D80E2C /* WorldOfPAYBACKApp.swift in Sources */,
+				F00971FF29AA17740030606E /* TransactionPillView.swift in Sources */,
 				F0970150299DA8D200D80E2C /* DateModel.swift in Sources */,
 				F0970144299D4E1600D80E2C /* DataModel.swift in Sources */,
 				F097014B299D740500D80E2C /* TransactionsView.swift in Sources */,
@@ -354,9 +368,10 @@
 				DEVELOPMENT_TEAM = YSRZA997C7;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = WorldOfPAYBACK/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -383,9 +398,10 @@
 				DEVELOPMENT_TEAM = YSRZA997C7;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = WorldOfPAYBACK/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
