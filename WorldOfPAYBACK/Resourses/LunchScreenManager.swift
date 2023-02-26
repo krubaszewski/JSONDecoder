@@ -20,12 +20,14 @@ final class LunchScreenManager: ObservableObject {
     private var fileError = TransactionsDataService()
 
     func dismiss() {
-        hasError = false
+        var randomDouble = Double.random(in: 1...3)
+        hasError = Bool.random()
+        
         print("Stan haserror z dissmissa: \(self.hasError)")
-        print("Stan haserrorTest z dissmissa: \(self.hasError)")
+        print("Stan haserrorTest z dissmissa: \(self.fileError.hasError)")
 
         if self.hasError == false && self.fileError.hasError == false {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + randomDouble) {
                 print("Stan z ifa: \(self.hasError)")
                 self.goToContentView()
             }

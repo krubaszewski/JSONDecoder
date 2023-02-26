@@ -45,7 +45,7 @@ struct LunchScreen: View {
             }) {
                 Text("OK")
             }
-        }.onAppear { DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) { lunchScreenManager.dismiss() } }
+        }.onAppear { DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) { lunchScreenManager.dismiss() } }
     }
     
     struct LunchScreen_Previews: PreviewProvider {
