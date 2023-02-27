@@ -12,6 +12,7 @@ class TransactionsDataService: ObservableObject {
 
     @Published var transactions: [Item] = []
     @Published var error: StaticJSONMapper.MappingError?
+    @Published var errorAPI: APIManager.NetworkingError?
     @Published var hasError: Bool = false
     @Published private(set) var isLoading = true
     var jsonFileSubscription: AnyCancellable?
@@ -23,10 +24,10 @@ class TransactionsDataService: ObservableObject {
     }
 
     func fetchFromFile() {
-        isLoading = false
         do {
             let jsonFileSubscription = try StaticJSONMapper.decode(file: "PBTransactions", type: Transactions.self)
             transactions = jsonFileSubscription.items
+            isLoading = false
         } catch {
             print(error)
             self.hasError = true
@@ -34,28 +35,39 @@ class TransactionsDataService: ObservableObject {
         }
     }
 
-    func fetchFromPROD() {
-        APIManager.shared.urlRequest("https://api.payback.com/transactions",
-                                     type: Transactions.self) { [weak self] result in
-            switch result {
-            case .success(let response):
-                self?.transactions = response.items
-            case .failure(let error):
-                print(error)
+    func fetchFromPROD() async {
+
+        do {
+            let response = try await APIManager.shared.urlRequest("https://api.payback.com/transactions",
+                type: Transactions.self)
+            self.transactions = response.items
+            isLoading = false
+        } catch {
+            self.hasError = true
+            if let networkingError = error as? APIManager.NetworkingError {
+                self.errorAPI = networkingError
+            } else {
+                self.errorAPI = .customError(error: error)
             }
         }
+        defer { isLoading = true }
     }
 
-    func fetchFromTEST() {
-        APIManager.shared.urlRequest("https://api-test.payback.com/transactions",
-                                     type: Transactions.self) { [weak self] result in
-            switch result {
-            case .success(let response):
-                self?.transactions = response.items
-            case .failure(let error):
-                print(error)
+    func fetchFromTEST() async {
+        do {
+            let response = try await APIManager.shared.urlRequest("https://api-test.payback.com/transactions",
+                type: Transactions.self)
+            self.transactions = response.items
+            isLoading = false
+        } catch {
+            self.hasError = true
+            if let networkingError = error as? APIManager.NetworkingError {
+                self.errorAPI = networkingError
+            } else {
+                self.errorAPI = .customError(error: error)
             }
         }
+        defer { isLoading = true }
     }
 
 //    func fetchFromFile() {

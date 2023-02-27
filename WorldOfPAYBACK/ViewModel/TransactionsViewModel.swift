@@ -21,14 +21,9 @@ class TransactionsViewModel: ObservableObject {
         transactions.map { $0.transactionDetail.value.amount }.reduce(0, +)
     }
 
-    init() {
-//        fakeURLCall()
+    init(){
         addSubscriber()
-        //        fetchFromFile()
-        //        sortByDate()
-        //        sumDisplayedAmounts()
     }
-
 
     func addSubscriber() {
         dataService.$transactions
@@ -38,20 +33,6 @@ class TransactionsViewModel: ObservableObject {
             self?.transactions = fact
         }.store(in: &cancel)
     }
-
-    
-//    func fakeURLCall(){
-//        
-//        let randomDouble = Double.random(in: 1..<3)
-//        
-//        DispatchQueue.main.asyncAfter(deadline: .now() + randomDouble) { [self] in
-//            if randomBool {
-//                self.addSubscriber()
-//            } else{
-//                Test()
-//            }
-//        }
-//    }
     
     func sortAndFilter(transactions: [Item], filter: FilterOption) -> [Item] {
         var test = sortByDate(transactions: transactions)

@@ -39,8 +39,8 @@ struct TransactionsView: View {
                 label: { EmptyView() })
         ).alert(isPresented: $errorHandel.hasError, error: errorHandel.error) { }
     }
-    func test(teste: FilterOption) {
-        switch teste {
+    func categoryMenu(_ category: FilterOption) {
+        switch category {
         case .ONE:
             vm.cat = .ONE
         case .TWO:
@@ -84,14 +84,6 @@ extension TransactionsView {
                         leading: 30,
                         bottom: 8,
                         trailing: -10))
-                    //                NavigationLink(destination: TransactionsDetailView(transaction: item),
-                    //                    label: {
-                    //                    })
-                    //                    .listRowSeparator(.hidden)
-                    //                .listRowInsets(EdgeInsets(top: 0,
-                    //                                leading: 16,
-                    //                                bottom: 8,
-                    //                                trailing:0))
                 }
             }
         }
@@ -106,7 +98,7 @@ extension TransactionsView {
         VStack {
             Menu(content: {
                 ForEach(FilterOption.allFilters, id: \.self) { filter in
-                    Button(action: { test(teste: filter) }, label: {
+                    Button(action: { categoryMenu(filter) }, label: {
                             Text("\(filter.rawValue)")
                         })
                 }

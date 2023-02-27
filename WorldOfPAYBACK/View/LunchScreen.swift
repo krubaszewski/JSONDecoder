@@ -12,8 +12,6 @@ struct LunchScreen: View {
     @EnvironmentObject var lunchScreenManager: LunchScreenManager
     @EnvironmentObject var networkMenager: NetworkMenager
     @Environment(\.colorScheme) var colorScheme
-
-//    @ObservedObject var test2 = LunchScreenManager()
     @State var infoooo: String = "Loading data..."
     @State var isActive: Bool = true
 

@@ -14,45 +14,27 @@ final class APIManager {
     private init() { }
 
     func urlRequest<T: Decodable>(_ addressURL: String,
-        type: T.Type,
-        completion: @escaping (Result<T, Error>) -> Void) {
+        type: T.Type) async throws -> T{
 
         guard let url = URL(string: addressURL) else {
-            completion(.failure(NetworkingError.invalidUrl))
-            return
+           throw NetworkingError.invalidUrl
         }
 
-        let reuqest = URLRequest(url: url)
-
-        let dataTask = URLSession.shared.dataTask(with: reuqest) { data, response, error in
-
-            if error != nil {
-                completion(.failure(NetworkingError.customError(error: error!)))
-                return
-            }
-
-            guard let response = response as? HTTPURLResponse,
-                (200...300) ~= response.statusCode else {
-                let statusCode = (response as! HTTPURLResponse).statusCode
-                completion(.failure(NetworkingError.invalidStatusCode(statusCode: statusCode)))
-                return
-            }
-
-            guard let data = data else {
-                completion(.failure(NetworkingError.invalidData))
-                return
-            }
-
-            do {
-                let decoder = JSONDecoder()
-                decoder.dateDecodingStrategy = .iso8601
-                let result = try decoder.decode(T.self, from: data)
-                completion(.success(result))
-            } catch {
-                completion(.failure(NetworkingError.failedToDecode(error: error)))
-            }
+        let request = URLRequest(url: url)
+        
+        let (data, response) = try await URLSession.shared.data(for: request)
+        
+        guard let response = response as? HTTPURLResponse,
+            (200...300) ~= response.statusCode else {
+            let statusCode = (response as! HTTPURLResponse).statusCode
+            throw NetworkingError.invalidStatusCode(statusCode: statusCode)
         }
-        dataTask.resume()
+
+        let decoder = JSONDecoder()
+        decoder.dateDecodingStrategy = .iso8601
+        let result = try decoder.decode(T.self, from: data)
+        
+        return result
     }
 }
 
