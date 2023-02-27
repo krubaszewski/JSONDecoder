@@ -12,24 +12,36 @@ struct WorldOfPAYBACKApp: App {
 
     @StateObject private var vm = TransactionsViewModel()
     @StateObject var lunchScreenManager = LunchScreenManager()
-
-    @State var randomBool = Bool.random()
+    @StateObject private var networkMenager = NetworkMenager()
 
     var body: some Scene {
         WindowGroup {
-            ZStack {
-                NavigationView {
-                    TransactionsView()
-                    //                    .tabItem {
-                    //                    Symbols.transactions
-                    //                    Text("Transactions")
-                    //                }
-                }.environmentObject(vm)
-                
-                if lunchScreenManager.state != .completed{
-                    LunchScreen()
-                }
-            }.environmentObject(lunchScreenManager)
+            if networkMenager.state == .offline {
+                OfflieView()
+            } else {
+                ZStack {
+                    TabView {
+                        NavigationView {
+                            TransactionsView()
+                        }.tabItem {
+                            Symbols.transactions
+                            Text("Transactions")
+                        }
+                        NavigationView {
+                            OnlineShoppingView()
+                            }.tabItem {
+                                Symbols.shopping
+                                Text("Online Shopping")
+                        }
+                    }.environmentObject(vm)
+                        .environmentObject(NetworkMenager())
+
+                    if lunchScreenManager.state != .completed && networkMenager.state == .online {
+                        LunchScreen()
+                    }
+                }.environmentObject(lunchScreenManager)
+                    .environmentObject(NetworkMenager())
+            }
         }
     }
 }

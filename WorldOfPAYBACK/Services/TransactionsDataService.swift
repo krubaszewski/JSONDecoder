@@ -12,24 +12,63 @@ class TransactionsDataService: ObservableObject {
 
     @Published var transactions: [Item] = []
     @Published var error: StaticJSONMapper.MappingError?
+    @Published var errorAPI: APIManager.NetworkingError?
     @Published var hasError: Bool = false
-
+    @Published private(set) var isLoading = true
     var jsonFileSubscription: AnyCancellable?
 
     init() {
         fetchFromFile()
+//        fetchFromPROD()
+//        fetchFromTEST()
     }
 
-            func fetchFromFile() {
-                do {
-                    let jsonFileSubscription = try StaticJSONMapper.decode(file: "PBTransactions", type: Transactions.self)
-                    transactions = jsonFileSubscription.items
-                } catch {
-                    print(error)
-                    self.hasError = true
-                    self.error = error as? StaticJSONMapper.MappingError
-                }
+    func fetchFromFile() {
+        do {
+            let jsonFileSubscription = try StaticJSONMapper.decode(file: "PBTransactions", type: Transactions.self)
+            transactions = jsonFileSubscription.items
+            isLoading = false
+        } catch {
+            print(error)
+            self.hasError = true
+            self.error = error as? StaticJSONMapper.MappingError
+        }
+    }
+
+    func fetchFromPROD() async {
+
+        do {
+            let response = try await APIManager.shared.urlRequest("https://api.payback.com/transactions",
+                type: Transactions.self)
+            self.transactions = response.items
+            isLoading = false
+        } catch {
+            self.hasError = true
+            if let networkingError = error as? APIManager.NetworkingError {
+                self.errorAPI = networkingError
+            } else {
+                self.errorAPI = .customError(error: error)
             }
+        }
+        defer { isLoading = true }
+    }
+
+    func fetchFromTEST() async {
+        do {
+            let response = try await APIManager.shared.urlRequest("https://api-test.payback.com/transactions",
+                type: Transactions.self)
+            self.transactions = response.items
+            isLoading = false
+        } catch {
+            self.hasError = true
+            if let networkingError = error as? APIManager.NetworkingError {
+                self.errorAPI = networkingError
+            } else {
+                self.errorAPI = .customError(error: error)
+            }
+        }
+        defer { isLoading = true }
+    }
 
 //    func fetchFromFile() {
 //        jsonFileSubscription = Bundle.main.decodeable(fileName: "PBTransacons.json")

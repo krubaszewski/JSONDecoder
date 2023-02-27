@@ -17,23 +17,29 @@ final class LunchScreenManager: ObservableObject {
 
     @Published private(set) var state: LunchScreenPhase = .begin
     @Published var hasError = false
+    @ObservedObject var networkMenager = NetworkMenager()
+
+//    @ObservedObject var networkMenager = NetworkMenager()
     private var fileError = TransactionsDataService()
 
     func dismiss() {
         var randomDouble = Double.random(in: 1...3)
-        hasError = Bool.random()
-        
-        print("Stan haserror z dissmissa: \(self.hasError)")
-        print("Stan haserrorTest z dissmissa: \(self.fileError.hasError)")
+        DispatchQueue.main.async {
+            self.hasError = Bool.random()
 
-        if self.hasError == false && self.fileError.hasError == false {
-            DispatchQueue.main.asyncAfter(deadline: .now() + randomDouble) {
-                print("Stan z ifa: \(self.hasError)")
-                self.goToContentView()
+
+            print("Stan haserror z dissmissa: \(self.hasError)")
+            print("Stan haserrorTest z dissmissa: \(self.fileError.hasError)")
+
+            if self.hasError == false && self.fileError.hasError == false && self.networkMenager.state == .online  {
+                DispatchQueue.main.asyncAfter(deadline: .now() + randomDouble) {
+                    print("Stan z ifa: \(self.hasError)")
+                    self.goToContentView()
+                }
+            } else if self.hasError == true {
+                print("Stan z elsa: \(self.hasError)")
+                self.state = .begin
             }
-        } else if self.hasError == true {
-            print("Stan z elsa: \(self.hasError)")
-            self.state = .begin
         }
     }
 
