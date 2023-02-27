@@ -13,7 +13,7 @@ class TransactionsDataService: ObservableObject {
     @Published var transactions: [Item] = []
     @Published var error: StaticJSONMapper.MappingError?
     @Published var hasError: Bool = false
-
+    @Published private(set) var isLoading = true
     var jsonFileSubscription: AnyCancellable?
 
     init() {
@@ -21,6 +21,7 @@ class TransactionsDataService: ObservableObject {
     }
 
             func fetchFromFile() {
+                isLoading = false
                 do {
                     let jsonFileSubscription = try StaticJSONMapper.decode(file: "PBTransactions", type: Transactions.self)
                     transactions = jsonFileSubscription.items

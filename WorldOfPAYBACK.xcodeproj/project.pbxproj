@@ -23,6 +23,9 @@
 		F097014B299D740500D80E2C /* TransactionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F097014A299D740500D80E2C /* TransactionsView.swift */; };
 		F097014E299D760800D80E2C /* Symbols.swift in Sources */ = {isa = PBXBuildFile; fileRef = F097014D299D760800D80E2C /* Symbols.swift */; };
 		F0970150299DA8D200D80E2C /* DateModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F097014F299DA8D200D80E2C /* DateModel.swift */; };
+		F0CD608F29ACE20C00708C3F /* NetworkMenager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0CD608E29ACE20C00708C3F /* NetworkMenager.swift */; };
+		F0CD609129ACE7D200708C3F /* OfflieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0CD609029ACE7D200708C3F /* OfflieView.swift */; };
+		F0CD609329AD191C00708C3F /* OnlineShoppingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0CD609229AD191C00708C3F /* OnlineShoppingView.swift */; };
 		F0EE833429A4F21600F322A1 /* TransactionsDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0EE833329A4F21600F322A1 /* TransactionsDataService.swift */; };
 		F0EE833A29A5976800F322A1 /* FilterOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0EE833929A5976800F322A1 /* FilterOption.swift */; };
 /* End PBXBuildFile section */
@@ -44,6 +47,9 @@
 		F097014A299D740500D80E2C /* TransactionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionsView.swift; sourceTree = "<group>"; };
 		F097014D299D760800D80E2C /* Symbols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Symbols.swift; sourceTree = "<group>"; };
 		F097014F299DA8D200D80E2C /* DateModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateModel.swift; sourceTree = "<group>"; };
+		F0CD608E29ACE20C00708C3F /* NetworkMenager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkMenager.swift; sourceTree = "<group>"; };
+		F0CD609029ACE7D200708C3F /* OfflieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfflieView.swift; sourceTree = "<group>"; };
+		F0CD609229AD191C00708C3F /* OnlineShoppingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnlineShoppingView.swift; sourceTree = "<group>"; };
 		F0EC2FA329A7B42300804EB0 /* TransactionPillView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionPillView.swift; sourceTree = "<group>"; };
 		F0EC2FA529A7B76400804EB0 /* PrevievProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrevievProvider.swift; sourceTree = "<group>"; };
 		F0EE833329A4F21600F322A1 /* TransactionsDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionsDataService.swift; sourceTree = "<group>"; };
@@ -128,6 +134,8 @@
 				F097014A299D740500D80E2C /* TransactionsView.swift */,
 				F00C410C29AA0E9000841485 /* LunchScreen.swift */,
 				F00C411629AA13E600841485 /* TransactionsDetailView.swift */,
+				F0CD609029ACE7D200708C3F /* OfflieView.swift */,
+				F0CD609229AD191C00708C3F /* OnlineShoppingView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -139,6 +147,7 @@
 				F097014D299D760800D80E2C /* Symbols.swift */,
 				F0EC2FA529A7B76400804EB0 /* PrevievProvider.swift */,
 				F0870A6829A4256200D7C938 /* Date.swift */,
+				F0CD608E29ACE20C00708C3F /* NetworkMenager.swift */,
 			);
 			path = Resourses;
 			sourceTree = "<group>";
@@ -230,6 +239,8 @@
 				F097014E299D760800D80E2C /* Symbols.swift in Sources */,
 				F00C410D29AA0E9000841485 /* LunchScreen.swift in Sources */,
 				F0970146299D672000D80E2C /* JSONMapper.swift in Sources */,
+				F0CD608F29ACE20C00708C3F /* NetworkMenager.swift in Sources */,
+				F0CD609129ACE7D200708C3F /* OfflieView.swift in Sources */,
 				F009720029AA179D0030606E /* PrevievProvider.swift in Sources */,
 				F00C411729AA13E600841485 /* TransactionsDetailView.swift in Sources */,
 				F097012E299D0C5400D80E2C /* WorldOfPAYBACKApp.swift in Sources */,
@@ -237,6 +248,7 @@
 				F0970150299DA8D200D80E2C /* DateModel.swift in Sources */,
 				F0970144299D4E1600D80E2C /* DataModel.swift in Sources */,
 				F097014B299D740500D80E2C /* TransactionsView.swift in Sources */,
+				F0CD609329AD191C00708C3F /* OnlineShoppingView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -11,7 +11,6 @@ import Combine
 class TransactionsViewModel: ObservableObject {
     
     @Published var transactions: [Item] = []
-    @Published var categories = "All"
     @Published var cat: FilterOption = .All
     @Published var randomBool = Bool.random()
     

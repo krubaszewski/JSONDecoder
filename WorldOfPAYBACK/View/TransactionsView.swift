@@ -12,16 +12,16 @@ struct TransactionsView: View {
 
     @EnvironmentObject private var vm: TransactionsViewModel
     @EnvironmentObject var lunchScreenManager: LunchScreenManager
+    @EnvironmentObject var networkMenager: NetworkMenager
+
     @State private var selectedTransaction: Item? = nil
     @State private var showDetailView: Bool = false
     @StateObject private var errorHandel = TransactionsDataService()
-
 
     var body: some View {
         ZStack {
 
             allTransactions
-
         }.navigationTitle("Transactions")
             .listStyle(PlainListStyle())
             .toolbar {
@@ -38,7 +38,6 @@ struct TransactionsView: View {
                 isActive: $showDetailView,
                 label: { EmptyView() })
         ).alert(isPresented: $errorHandel.hasError, error: errorHandel.error) { }
-            
     }
     func test(teste: FilterOption) {
         switch teste {
@@ -61,6 +60,7 @@ struct TransactionsView_Previews: PreviewProvider {
             TransactionsView()
         }.environmentObject(TransactionsViewModel())
             .environmentObject(LunchScreenManager())
+            .environmentObject(NetworkMenager())
             .listRowSeparator(.hidden)
     }
 }
@@ -69,28 +69,32 @@ extension TransactionsView {
 
     private var allTransactions: some View {
         List() {
-            ZStack {
-                summaryDisplay
+            if errorHandel.isLoading == true {
+                LunchScreen()
+            } else {
+                ZStack {
+                    summaryDisplay
+                }
+                ForEach(vm.transactions) { item in
+                    TransactionPillView(transaction: item)
+                        .onTapGesture {
+                        goToDetail(transaction: item)
+                    }.listRowSeparator(.hidden)
+                        .listRowInsets(EdgeInsets(top: 0,
+                        leading: 30,
+                        bottom: 8,
+                        trailing: -10))
+                    //                NavigationLink(destination: TransactionsDetailView(transaction: item),
+                    //                    label: {
+                    //                    })
+                    //                    .listRowSeparator(.hidden)
+                    //                .listRowInsets(EdgeInsets(top: 0,
+                    //                                leading: 16,
+                    //                                bottom: 8,
+                    //                                trailing:0))
+                }
             }
-            ForEach(vm.transactions) { item in
-                TransactionPillView(transaction: item)
-                    .onTapGesture {
-                    goToDetail(transaction: item)
-                }.listRowSeparator(.hidden)
-                    .listRowInsets(EdgeInsets(top: 0,
-                    leading: 16,
-                    bottom: 8,
-                    trailing: 0))
-//                NavigationLink(destination: TransactionsDetailView(transaction: item),
-//                    label: {
-//                    })
-//                    .listRowSeparator(.hidden)
-//                .listRowInsets(EdgeInsets(top: 0,
-//                                leading: 16,
-//                                bottom: 8,
-//                                trailing:0))
-            }
-        }.onAppear()
+        }
     }
 
     private func goToDetail(transaction: Item) {

@@ -10,5 +10,6 @@ import SwiftUI
 
 enum Symbols{
     static let transactions = Image(systemName: "list.bullet")
+    static let shopping = Image(systemName: "cart.fill")
 }
 
