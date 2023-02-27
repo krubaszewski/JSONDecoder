@@ -26,6 +26,7 @@
 		F0CD608F29ACE20C00708C3F /* NetworkMenager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0CD608E29ACE20C00708C3F /* NetworkMenager.swift */; };
 		F0CD609129ACE7D200708C3F /* OfflieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0CD609029ACE7D200708C3F /* OfflieView.swift */; };
 		F0CD609329AD191C00708C3F /* OnlineShoppingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0CD609229AD191C00708C3F /* OnlineShoppingView.swift */; };
+		F0CD609629AD584100708C3F /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0CD609529AD584100708C3F /* APIManager.swift */; };
 		F0EE833429A4F21600F322A1 /* TransactionsDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0EE833329A4F21600F322A1 /* TransactionsDataService.swift */; };
 		F0EE833A29A5976800F322A1 /* FilterOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0EE833929A5976800F322A1 /* FilterOption.swift */; };
 /* End PBXBuildFile section */
@@ -50,6 +51,7 @@
 		F0CD608E29ACE20C00708C3F /* NetworkMenager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkMenager.swift; sourceTree = "<group>"; };
 		F0CD609029ACE7D200708C3F /* OfflieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfflieView.swift; sourceTree = "<group>"; };
 		F0CD609229AD191C00708C3F /* OnlineShoppingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnlineShoppingView.swift; sourceTree = "<group>"; };
+		F0CD609529AD584100708C3F /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 		F0EC2FA329A7B42300804EB0 /* TransactionPillView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionPillView.swift; sourceTree = "<group>"; };
 		F0EC2FA529A7B76400804EB0 /* PrevievProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrevievProvider.swift; sourceTree = "<group>"; };
 		F0EE833329A4F21600F322A1 /* TransactionsDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionsDataService.swift; sourceTree = "<group>"; };
@@ -90,6 +92,7 @@
 				F097012D299D0C5400D80E2C /* WorldOfPAYBACKApp.swift */,
 				F0EE833229A4F1E100F322A1 /* Services */,
 				F097014C299D75EF00D80E2C /* Resourses */,
+				F0CD609429AD581700708C3F /* API */,
 				F0970149299D692600D80E2C /* View */,
 				F0970148299D690B00D80E2C /* ViewModel */,
 				F0970147299D690400D80E2C /* Model */,
@@ -150,6 +153,14 @@
 				F0CD608E29ACE20C00708C3F /* NetworkMenager.swift */,
 			);
 			path = Resourses;
+			sourceTree = "<group>";
+		};
+		F0CD609429AD581700708C3F /* API */ = {
+			isa = PBXGroup;
+			children = (
+				F0CD609529AD584100708C3F /* APIManager.swift */,
+			);
+			path = API;
 			sourceTree = "<group>";
 		};
 		F0EE833229A4F1E100F322A1 /* Services */ = {
@@ -232,6 +243,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F0EE833A29A5976800F322A1 /* FilterOption.swift in Sources */,
+				F0CD609629AD584100708C3F /* APIManager.swift in Sources */,
 				F0EE833429A4F21600F322A1 /* TransactionsDataService.swift in Sources */,
 				F0870A6929A4256200D7C938 /* Date.swift in Sources */,
 				F090705C29A249CF006C27DF /* TransactionsViewModel.swift in Sources */,

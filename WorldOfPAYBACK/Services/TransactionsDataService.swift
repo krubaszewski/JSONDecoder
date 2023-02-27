@@ -18,19 +18,45 @@ class TransactionsDataService: ObservableObject {
 
     init() {
         fetchFromFile()
+//        fetchFromPROD()
+//        fetchFromTEST()
     }
 
-            func fetchFromFile() {
-                isLoading = false
-                do {
-                    let jsonFileSubscription = try StaticJSONMapper.decode(file: "PBTransactions", type: Transactions.self)
-                    transactions = jsonFileSubscription.items
-                } catch {
-                    print(error)
-                    self.hasError = true
-                    self.error = error as? StaticJSONMapper.MappingError
-                }
+    func fetchFromFile() {
+        isLoading = false
+        do {
+            let jsonFileSubscription = try StaticJSONMapper.decode(file: "PBTransactions", type: Transactions.self)
+            transactions = jsonFileSubscription.items
+        } catch {
+            print(error)
+            self.hasError = true
+            self.error = error as? StaticJSONMapper.MappingError
+        }
+    }
+
+    func fetchFromPROD() {
+        APIManager.shared.urlRequest("https://api.payback.com/transactions",
+                                     type: Transactions.self) { [weak self] result in
+            switch result {
+            case .success(let response):
+                self?.transactions = response.items
+            case .failure(let error):
+                print(error)
             }
+        }
+    }
+
+    func fetchFromTEST() {
+        APIManager.shared.urlRequest("https://api-test.payback.com/transactions",
+                                     type: Transactions.self) { [weak self] result in
+            switch result {
+            case .success(let response):
+                self?.transactions = response.items
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
 
 //    func fetchFromFile() {
 //        jsonFileSubscription = Bundle.main.decodeable(fileName: "PBTransacons.json")
